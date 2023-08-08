@@ -37,10 +37,10 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3 #changed from v2 to v3 as node 16 uses v3
 
     - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
+      uses: aws-actions/configure-aws-credentials #changed from @v1 to no version as default is node 16
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -48,7 +48,7 @@ jobs:
 
     - name: Login to Amazon ECR
       id: login-ecr
-      uses: aws-actions/amazon-ecr-login@v1
+      uses: aws-actions/amazon-ecr-login #changed from @v1 to no version as default is node 16
 
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
@@ -66,14 +66,14 @@ jobs:
 
     - name: Fill in the new image ID in the Amazon ECS task definition
       id: task-def
-      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      uses: aws-actions/amazon-ecs-render-task-definition #changed from @v1 to no version as default is node 16
       with:
         task-definition: ecs-task-definition.json
         container-name: sctp-cloud-infra_enchencontainer # need to change this cluster name to own?
         image: ${{ steps.build-image.outputs.image }}
 
     - name: Deploy Amazon ECS task definition
-      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      uses: aws-actions/amazon-ecs-deploy-task-definition #changed from @v1 to no version as default is node 16
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: sctp-cloud-infra-ecs-service_enchen # this will fail as need to run the "push one time and fail this area, but cluster will be created, after that push one more time for service to be added manual in console and run again."
