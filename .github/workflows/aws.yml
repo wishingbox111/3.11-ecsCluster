@@ -54,7 +54,7 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: sctp-cloud-infra_enchen
+        ECR_REPOSITORY: enchen_ecr3_11 # manual create a repo and add in ECR repo name
         IMAGE_TAG: latest
       run: |
         # Build a docker container and
