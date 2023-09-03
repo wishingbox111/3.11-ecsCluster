@@ -1,17 +1,16 @@
 {
-    "family": "pglim360-ce-lesson-3-11",
+    "family": "enchenTaskDefinition",
     "executionRoleArn": "arn:aws:iam::255945442255:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
     "containerDefinitions": [
         {
-            "name": "pglim360-ce-lesson-3-11", - this should be container name
-            "image": "255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/pglim360-ce-lesson-3-11:latest", - this is the URI of image
+            "name": "enchencontainer", 
+            "image": "255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/enchen_ecr3_11:latest", 
             "portMappings": [
                 {
                     "containerPort": 3000,
                     "hostPort": 3000,
                     "protocol": "tcp"
-                    
                 }
             ],
             "essential": true

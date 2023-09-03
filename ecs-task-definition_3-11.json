@@ -1,24 +1,62 @@
 {
+    "taskDefinitionArn": "arn:aws:ecs:ap-southeast-1:255945442255:task-definition/enchenTaskDefinition:1",
+    "containerDefinitions": [
+        {
+            "name": "enchencontainer",
+            "image": "255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/enchen_ecr3_11:latest",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "name": "enchencontainer-3000-tcp",
+                    "containerPort": 3000,
+                    "hostPort": 3000,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "ulimits": []
+        }
+    ],
     "family": "enchenTaskDefinition",
     "executionRoleArn": "arn:aws:iam::255945442255:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "containerDefinitions": [
+    "revision": 1,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
         {
-            "name": "enchencontainer", 
-            "image": "255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/enchen_ecr3_11:latest", 
-            "portMappings": [
-                {
-                    "containerPort": 3000,
-                    "hostPort": 3000,
-                    "protocol": "tcp"
-                }
-            ],
-            "essential": true
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
         }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
     ],
     "requiresCompatibilities": [
         "FARGATE"
     ],
-    "cpu": "512",
-    "memory": "1024"
+    "cpu": "1024",
+    "memory": "3072",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "registeredAt": "2023-09-03T03:00:22.918Z",
+    "registeredBy": "arn:aws:iam::255945442255:user/chen",
+    "tags": []
 }
