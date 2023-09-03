@@ -4,7 +4,7 @@
     "networkMode": "awsvpc",
     "containerDefinitions": [
         {
-            "name": "enchenTaskDefinition", 
+            "name": "enchencontainer", 
             "image": "255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/enchen_ecr3_11:latest", 
             "portMappings": [
                 {
